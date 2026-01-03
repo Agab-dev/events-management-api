@@ -13,7 +13,10 @@ return new class extends Migration {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description')->nullable();
+            $table->text('description');
+            $table->unsignedInteger('price_in_pennies');
+            $table->integer('total_seats');
+            $table->float('group_discount', 2)->nullable();
             $table->dateTime('start_time');
             $table->dateTime('end_time');
             $table->foreignId('user_id')->constrained('users')->restrictOnDelete();
